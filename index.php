@@ -7,11 +7,10 @@
     $query = 'SELECT * FROM `oeuvres`';
     $oeuvresStatement = $bdd->prepare($query);
     $oeuvresStatement->execute();
-    $oeuvres = $oeuvresStatement->fetchAll();
 
 ?>
 <div id="liste-oeuvres">
-    <?php foreach($oeuvres as $oeuvre): ?>
+    <?php while($oeuvre = $oeuvresStatement->fetch()): ?>
         <article class="oeuvre">
             <a href="oeuvre.php?id=<?= $oeuvre['id'] ?>">
                 <img src="<?= $oeuvre['image'] ?>" alt="<?= $oeuvre['titre'] ?>">
@@ -19,6 +18,6 @@
                 <p class="description"><?= $oeuvre['artiste'] ?></p>
             </a>
         </article>
-    <?php endforeach; ?>
+    <?php endwhile; ?>
 </div>
 <?php require 'footer.php'; ?>

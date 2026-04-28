@@ -8,7 +8,7 @@ if(empty($_POST['titre'])
 || empty($_POST['description'])
 || strlen($_POST['description']) < 3
 || !filter_var($_POST['image'], FILTER_VALIDATE_URL)) {
-    header('location: ajouter.php');
+    header('location: ajouter.php?error=1');
 }else{
     $bdd = connexion();
     $query = 'INSERT INTO `oeuvres` (`titre`, `artiste`, `image`, `description`) VALUES (:titre, :artiste, :image, :description)';

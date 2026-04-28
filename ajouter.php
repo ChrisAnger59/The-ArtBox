@@ -1,5 +1,9 @@
 <?php require 'header.php'; ?>
 
+<?php if (isset($_GET['error'])): ?>
+    <p class="erreur">Vous n'avez pas renseigné les champs correctement</p>
+<?php endif; ?>
+
 <form action="traitement.php" method="POST">
     <div class="champ-formulaire">
         <label for="titre">Titre de l'œuvre</label>
